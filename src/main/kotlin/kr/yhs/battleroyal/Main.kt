@@ -3,6 +3,7 @@ package kr.yhs.battleroyal
 import com.github.monun.kommand.kommand
 import kr.yhs.battleroyal.commands.Game
 import kr.yhs.battleroyal.listener.DeathEvent
+import kr.yhs.battleroyal.listener.PlaceEvent
 import org.bukkit.Bukkit
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
@@ -26,6 +27,7 @@ class Main: JavaPlugin(), Listener {
 
         server.pluginManager.apply {
             registerEvents(DeathEvent(this@Main), this@Main)
+            registerEvents(PlaceEvent(this@Main), this@Main)
         }
         Bukkit.getLogger().info("BattleRoyal - Plugin load done.")
     }

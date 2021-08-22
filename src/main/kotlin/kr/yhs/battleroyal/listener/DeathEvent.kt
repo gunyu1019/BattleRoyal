@@ -27,10 +27,12 @@ class DeathEvent(private val plugin: Main) : Listener {
             val mat: Material = player.eyeLocation.block.type
 
             if (dc == EntityDamageEvent.DamageCause.SUFFOCATION && mat == Material.AIR) {
-                Bukkit.broadcastMessage("${player.name}이(가) 자기장 밖에서 질식하였습니다.")
+                var message: Component = Component.text("${player.name}이(가) 자기장 밖에서 질식하였습니다.")
+                Bukkit.broadcast(message)
             }
         } else {
-            Bukkit.broadcastMessage("${player.name}이 ${killer.name}에 의해 살해당했습니다.")
+            var message: Component = Component.text("${player.name}이 ${killer.name}에 의해 살해당했습니다.")
+            Bukkit.broadcast(message)
         }
         player.sendMessage("${ChatColor.RED}${ChatColor.BOLD}아쉽게도, 탈락하셨습니다. (자동으로 관전모드로 전환됩니다.)")
         player.gameMode = GameMode.SPECTATOR
